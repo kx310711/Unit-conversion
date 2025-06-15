@@ -1,0 +1,174 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  line-height: 1.5;
+  padding: 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+}
+
+#home header {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+#home nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+#home nav button {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #888;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: background 0.2s, transform 0.1s;
+}
+
+#home nav button:hover {
+  background: rgba(0,0,0,0.05);
+  transform: translateY(-2px);
+}
+
+/* nah, make something here later */
+//*#all-conversion-sections {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+//*}
+
+/* Cada card de conversión */
+section {
+  flex: 1 1 300px;
+  max-width: 350px;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+
+section > * + * {
+  margin-top: 1rem;
+}
+
+/* Figura */
+figure {
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+figcaption {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0.5rem;
+}
+
+
+fieldset {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+legend {
+  font-weight: bold;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+}
+
+
+section button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+section button:hover {
+  transform: translateY(-1px);
+  background: rgba(0,0,0,0.05);
+}
+
+
+aside {
+  font-size: 0.85rem;
+  color: #666;
+  background: #f9f9f9;
+  padding: 0.75rem;
+  border-radius: 4px;
+}
+
+
+#go-home {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+#go-home img {
+  width: 40px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#go-home img:hover {
+  transform: scale(1.1);
+}
+
+
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* 5. Responsividad */
+@media (max-width: 768px) {
+  #all-conversion-sections {
+    flex-direction: column;
+    align-items: center;
+  }
+  section {
+    max-width: 90%;
+  }
+}
