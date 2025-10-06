@@ -21,3 +21,18 @@ function distance(){
     var m = km * 0.62137
     document.getElementById("miles").value = m
 }
+
+/* new dark /lightmode*/
+const toggleBtn = document.getElementById('theme-toggle');
+const body = document.body;
+
+if (localStorage.getItem('theme') === 'dark') {
+  body.classList.add('dark-mode');
+}
+
+// Toggle theme
+toggleBtn.addEventListener('click', () => {
+  body.classList.toggle('dark-mode');
+  const theme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+  localStorage.setItem('theme', theme);
+});

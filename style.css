@@ -1,174 +1,159 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* THEME VARIABLES I GOING TO ADD DARK AND LIGHT MODE*/
+
+/* Light mode */
+:root {
+  --bg-color: #f7f9fb;
+  --text-color: #333;
+  --card-bg: #fff;
+  --border-color: #ddd;
+  --accent-color: #4CAF50;
+  --accent-hover: #45a049;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --muted-bg: #f1f3f5;
+  --muted-text: #666;
 }
 
+/* Dark mode */
+body.dark-mode {
+  --bg-color: #1e1f22;
+  --text-color: #f1f1f1;
+  --card-bg: #2a2b2f;
+  --border-color: #444;
+  --accent-color: #6EE787;
+  --accent-hover: #57d673;
+  --shadow-color: rgba(0, 0, 0, 0.6);
+  --muted-bg: #2e2f33;
+  --muted-text: #aaa;
+}
+
+/* fixing previous css */
+
 body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  line-height: 1.6;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Segoe UI', Tahoma, sans-serif;
-  line-height: 1.5;
-  padding: 20px;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
-.container {
-  width: 100%;
-  max-width: 1200px;
-}
-
-#home header {
-  font-size: 2.5rem;
+header {
+  font-size: 2rem;
+  font-weight: 600;
   text-align: center;
   margin-bottom: 1rem;
 }
 
-#home nav {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-#home nav button {
-  padding: 0.75rem 1.5rem;
-  border: 2px solid #888;
-  background: transparent;
-  cursor: pointer;
-  font-size: 1rem;
-  border-radius: 4px;
-  transition: background 0.2s, transform 0.1s;
-}
-
-#home nav button:hover {
-  background: rgba(0,0,0,0.05);
-  transform: translateY(-2px);
-}
-
-/* nah, make something here later */
-//*#all-conversion-sections {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-//*}
-
-/* Cada card de conversión */
 section {
-  flex: 1 1 300px;
-  max-width: 350px;
-  background: #fff;
-  border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px var(--shadow-color);
   padding: 1.5rem;
+  margin: 1.5rem auto;
+  max-width: 600px;
+  transition: all 0.3s ease;
 }
 
-
-section > * + * {
-  margin-top: 1rem;
+section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px var(--shadow-color);
 }
-
-/* Figura */
-figure {
-  text-align: center;
-}
-
-figure img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 4px;
-}
-
-figcaption {
-  font-size: 0.9rem;
-  color: #555;
-  margin-top: 0.5rem;
-}
-
 
 fieldset {
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background-color: var(--muted-bg);
   padding: 1rem;
+  border-radius: 8px;
 }
 
 legend {
   font-weight: bold;
+  color: var(--text-color);
 }
 
 label {
-  display: block;
+  font-weight: 500;
+}
+
+input {
+  padding: 0.4rem;
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
   margin-bottom: 0.5rem;
-  font-size: 0.95rem;
+  background: var(--card-bg);
+  color: var(--text-color);
 }
 
-input[type="number"] {
-  width: 100%;
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: 1px solid #bbb;
-  border-radius: 4px;
-}
-
-
-section button {
-  width: 100%;
-  padding: 0.75rem;
-  font-size: 1rem;
+section button, #home nav button {
+  background-color: var(--accent-color);
+  color: #fff;
   border: none;
-  border-radius: 4px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background 0.2s, transform 0.1s;
+  transition: all 0.3s ease;
 }
 
-section button:hover {
-  transform: translateY(-1px);
-  background: rgba(0,0,0,0.05);
+section button:hover,
+#home nav button:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
 }
-
 
 aside {
-  font-size: 0.85rem;
-  color: #666;
-  background: #f9f9f9;
-  padding: 0.75rem;
-  border-radius: 4px;
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  background: var(--muted-bg);
+  padding: 0.8rem;
+  border-radius: 6px;
+  color: var(--muted-text);
 }
-
-
-#go-home {
-  margin: 2rem 0;
-  text-align: center;
-}
-
-#go-home img {
-  width: 40px;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-#go-home img:hover {
-  transform: scale(1.1);
-}
-
 
 footer {
-  text-align: center;
   margin-top: 2rem;
+  color: var(--muted-text);
   font-size: 0.9rem;
-  color: #555;
 }
 
-/* 5. Responsividad */
+/* theme toggle button for the new mode*/
+#theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  font-size: 1.3rem;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px var(--shadow-color);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+#theme-toggle:hover {
+  background: var(--accent-color);
+  color: #fff;
+}
+
+/* same code*/
 @media (max-width: 768px) {
-  #all-conversion-sections {
-    flex-direction: column;
-    align-items: center;
-  }
   section {
     max-width: 90%;
+    padding: 1rem;
+  }
+  header {
+    font-size: 1.6rem;
+  }
+  #theme-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
   }
 }
