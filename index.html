@@ -1,109 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Unit Conversions</title>
-    <link rel="stylesheet" href="style.css" />
-    <script defer src="script.js"></script>
-  </head>
-  <body>
-    <button id="theme-toggle" title="Toggle dark mode">🌓</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unit Conversion Toolkit</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Unit Conversion Toolkit</h1>
+      <p>Fast, accurate, and practical unit tools.</p>
+    </div>
+    <button id="theme-toggle" class="theme-btn" type="button">Theme: Light</button>
+  </header>
 
-    <section id="home">
-      <header>Unit Conversions</header>
-      <nav>
-        <div class="topdiv">
-          <a href="#temperature"><button class="topmenu">Temperature</button></a>
-          <a href="#weight"><button class="topmenu">Weight</button></a>
-          <a href="#distance"><button class="topmenu">Distance</button></a>
-        </div>
-      </nav>
+  <main class="layout">
+    <section class="card converter-card">
+      <h2>Converter</h2>
+
+      <figure class="category-figure">
+        <img id="category_image" src="" alt="Conversion category illustration" />
+        <figcaption id="category_caption">Category visual</figcaption>
+      </figure>
+
+      <div class="grid two-col">
+        <label>
+          Category
+          <select id="category"></select>
+        </label>
+        <label>
+          Value
+          <input id="input_value" type="number" step="any" placeholder="Enter value" />
+        </label>
+      </div>
+
+      <div class="grid unit-grid">
+        <label>
+          From
+          <select id="from_unit"></select>
+        </label>
+        <button id="swap_btn" class="swap-btn" type="button" aria-label="Swap units">⇄</button>
+        <label>
+          To
+          <select id="to_unit"></select>
+        </label>
+      </div>
+
+      <div class="actions">
+        <button id="convert_btn" class="primary-btn" type="button">Convert</button>
+        <button id="favorite_btn" class="secondary-btn" type="button">Add Favorite</button>
+        <button id="copy_result_btn" class="secondary-btn" type="button">Copy Result</button>
+        <button id="copy_formula_btn" class="secondary-btn" type="button">Copy Formula</button>
+        <button id="clear_btn" class="secondary-btn" type="button">Clear</button>
+      </div>
+
+      <p id="error" class="error" aria-live="polite"></p>
+
+      <article class="result-box">
+        <h3>Result</h3>
+        <p id="result">-</p>
+      </article>
+
+      <article class="formula-box">
+        <h3>Formula</h3>
+        <p id="formula">-</p>
+      </article>
     </section>
-    <div style="clear:both;"></div>
 
-    <div id="all-conversion-sections">
+    <section class="card tools-card">
+      <h2>Favorites</h2>
+      <button id="clear_favorites_btn" class="secondary-btn" type="button">Clear All Favorites</button>
+      <ul id="favorites" class="list"></ul>
 
-      <section id="temperature" class="b temperature">
-        <div id="tmp">
-          <figure>
-            <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-CD0101EN-SkillsNetwork/labs/Theia%20Labs/02%20-%20HTML5%20Elements/images/thermo.png" width="150px"/>
-            <figcaption>Celsius to Fahrenheit Conversion</figcaption>
-          </figure>
-          <article>
-            <fieldset>
-              <legend>Temperature</legend>
-              <label for="celsius">Celsius</label> <br/>
-              <input type="number" id="celsius"> <br/>
-              <button id="temperature" onclick="temperature()">Convert</button> <br/>
-              <input type="number" id="fahrenheit"> <br/>
-              <label for="fahrenheit">Fahrenheit</label>
-            </fieldset>
-            <aside>
-              To convert celsius to fahrenheit yourself, use this formula replacing the `C` with your temperature in celsius: (C × 9/5) + 32
-            </aside>
-          </article>
-        </div>
-      </section>
+      <h2>Batch Convert</h2>
+      <p class="muted">Enter numbers separated by commas, spaces, or new lines.</p>
+      <textarea id="batch_input" rows="5" placeholder="10, 25, 40"></textarea>
+      <button id="batch_btn" class="secondary-btn" type="button">Run Batch Conversion</button>
+      <ul id="batch_output" class="list"></ul>
 
-      <div style="clear:both;"></div>
+      <h2>Scientific Calculator</h2>
+      <input id="calc_display" class="calc-display" type="text" readonly value="0" />
+      <div class="calc-grid" id="calc_grid">
+        <button data-key="7">7</button><button data-key="8">8</button><button data-key="9">9</button><button data-key="/">÷</button>
+        <button data-key="4">4</button><button data-key="5">5</button><button data-key="6">6</button><button data-key="*">×</button>
+        <button data-key="1">1</button><button data-key="2">2</button><button data-key="3">3</button><button data-key="-">−</button>
+        <button data-key="0">0</button><button data-key=".">.</button><button data-key="(">(</button><button data-key=")">)</button>
+        <button data-key="sqrt(">√</button><button data-key="pow10">10^x</button><button data-key="+">+</button><button data-key="equals">=</button>
+        <button class="calc-wide" data-key="clear">Clear</button><button class="calc-wide" data-key="back">Back</button>
+      </div>
 
-      <section id="weight" class="b weight">
-        <div id="wgt">
-          <figure>
-            <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-CD0101EN-SkillsNetwork/labs/Theia%20Labs/02%20-%20HTML5%20Elements/images/weight.png" width="150px"/>
-            <figcaption>Kilograms to Pounds Conversion</figcaption>
-          </figure>
-          <article>
-            <fieldset>
-              <legend>Weight</legend>
-              <label for="kilo">KG</label> <br/>
-              <input type="number" id="kilo"> <br/>
-              <button id="weight" onclick="weight()">Convert</button> <br/>
-              <input type="number" id="pounds"> <br/>
-              <label for="pounds">Pounds</label>
-            </fieldset>
-            <aside>
-              To convert kilograms to pounds yourself, use this formula replacing the `kg` with your weight in kilograms: kg × 2.205
-            </aside>
-          </article>
-        </div>
-      </section>
+      <h2>Recent Conversions</h2>
+      <ul id="history" class="list"></ul>
+    </section>
+  </main>
 
-      <div style="clear:both;"></div>
-
-      <section id="distance" class="b distance">
-        <div id="dst">
-          <figure>
-            <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-CD0101EN-SkillsNetwork/labs/Theia%20Labs/02%20-%20HTML5%20Elements/images/speedo.png" width="150px"/>
-            <figcaption>Kilometers to Miles Conversion</figcaption>
-          </figure>
-          <article>
-            <fieldset>
-              <legend>Distance</legend>
-              <label for="km">KM</label> <br/>
-              <input type="number" id="km"> <br/>
-              <button id="distance" onclick="distance()">Convert</button> <br/>
-              <input type="number" id="miles"> <br/>
-              <label for="miles">Miles</label>
-            </fieldset>
-            <aside>
-              To convert kilometers to miles yourself, use this formula replacing the `km` with your distance in kilometers: km × 0.62137
-            </aside>
-          </article>
-        </div>
-      </section>
-
-      <div style="clear:both;"></div>
-
-    </div>
-
-    <div id="go-home" class="iconbutton">
-      <a href="#home">
-        <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-CD0101EN-SkillsNetwork/labs/Theia%20Labs/02%20-%20HTML5%20Elements/images/home.svg"/>
-      </a>
-    </div>
-
-    <footer>This is my unit conversion practice, made by illy</footer>
-  </body>
+  <footer>Unit Conversion Toolkit • Illinois Familia</footer>
+</body>
 </html>
